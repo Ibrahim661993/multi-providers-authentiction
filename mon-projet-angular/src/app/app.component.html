@@ -1,0 +1,26 @@
+<header class="page-header">
+  <img src="assets/logo.png" alt="Logo" class="logo" />
+  <h1 class="title">Multi Providers Authentication</h1>
+  <div class="button-group">
+      <button (click)="loginWithKeycloak()">Login with Keycloak</button>
+      <button (click)="loginWithOkta()">Login with Okta</button>
+     </div>
+</header>
+
+
+<div class="container">
+
+      <div *ngIf="auth.isLoggedIn">
+        <p>Welcome!</p>
+        <pre *ngIf="auth.userInfo as user">{{ user | json }}</pre>
+
+        <button (click)="logout()">Logout</button>
+
+        <hr />
+        <button (click)="getUser()">GET /user</button>
+        <button (click)="getAdmin()">GET /admin</button>
+
+        <p *ngIf="userResponse"><strong>User:</strong> {{ userResponse }}</p>
+        <p *ngIf="adminResponse"><strong>Admin:</strong> {{ adminResponse }}</p>
+      </div>
+    </div>

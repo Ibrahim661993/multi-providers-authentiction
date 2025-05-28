@@ -1,0 +1,92 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* toute la hauteur visible de la fenêtre */
+}
+
+
+.container {
+  flex-grow: 1; /* prend tout l'espace restant */
+  width: 100%;
+  margin: 0; /* centré horizontalement */
+  
+  
+ 
+  background-color: #f8f9fa;
+
+  background-image: url('/assets/thinktank.png'); /* ← chemin de l’image */
+  background-size: cover;      /* adapte l’image à la taille du conteneur */
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ 
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+
+}
+
+h2 {
+  text-align: center;
+  color: #343a40;
+}
+
+pre {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.page-header {
+  height: 100px; /* ou la hauteur que tu veux */
+  display: flex;
+  align-items: center;
+ 
+  background-color :white;
+  color: white;
+  
+  border-radius: 8px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  margin-right: 15px;
+}
+
+.title {
+  
+  margin: 0;
+  flex: 1; /* ← prend tout l’espace disponible */
+  text-align: center; /* ← centre le texte dans cet espace */ 
+  color: #343a40;
+}
+
+
+
+
+
+
+
+
+
+
