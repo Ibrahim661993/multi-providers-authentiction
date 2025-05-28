@@ -4,7 +4,9 @@
     <file url="file://$PROJECT_DIR$/auth-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/multi-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/okta-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/okta/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/registry-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/social-auth/src/main/java" charset="UTF-8" />
