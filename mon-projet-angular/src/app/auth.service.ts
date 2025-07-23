@@ -52,9 +52,30 @@ export class AuthService {
   //   return this.oauthService.loadUserProfile();
   // }
 
-  async loadUserProfile() {
-    this.userProfile = await this.oauthService.loadUserProfile();
+ async loadUserProfile() {
+  try {
+    // Récupère le profile de base via /userinfo
+    const profile = await this.oauthService.loadUserProfile();
+
+    // Récupère le token
+    const token = this.oauthService.getAccessToken();
+
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1])); // décode le token JWT
+      // Fusionne les données du token (rôles etc.) avec le profile de base
+      this.userProfile = {
+        ...profile,
+        ...payload,
+      };
+      console.log('Profil utilisateur enrichi :', this.userProfile);
+    } else {
+      this.userProfile = profile;
+    }
+  } catch (error) {
+    console.error('Erreur lors du chargement du profil :', error);
   }
+}
+
 
   get userInfo(): any {
     return this.userProfile;

@@ -47,8 +47,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
     private String getPrincipleClaimName(Jwt jwt) {
         return Optional.ofNullable(principleAttribute).orElse(JwtClaimNames.SUB);
     }
-
-    //    private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt jwt) {
+    //private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt jwt) {
 //        Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
 //        if (resourceAccess == null || resourceAccess.get(resourceId) == null) return Set.of();
 //

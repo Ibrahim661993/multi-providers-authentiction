@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="resource-service" />
         <module name="keycloak-auth" />
         <module name="gateway-api" />
         <module name="multi-auth" />
@@ -31,6 +32,7 @@
       <module name="okta" options="-parameters" />
       <module name="okta-auth" options="-parameters" />
       <module name="registry-api" options="-parameters" />
+      <module name="resource-service" options="-parameters" />
       <module name="social-auth" options="-parameters" />
     </option>
   </component>

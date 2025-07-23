@@ -2,25 +2,63 @@
   <img src="assets/logo.png" alt="Logo" class="logo" />
   <h1 class="title">Multi Providers Authentication</h1>
   <div class="button-group">
-      <button (click)="loginWithKeycloak()">Login with Keycloak</button>
-      <button (click)="loginWithOkta()">Login with Okta</button>
-     </div>
+    <button (click)="loginWithKeycloak()">Login with Keycloak</button>
+    <button (click)="loginWithOkta()">Login with Okta</button>
+  </div>
 </header>
 
+<!-- ✅ Une seule section de contenu connecté -->
+<div class="container" *ngIf="auth.isLoggedIn && auth.userInfo as user">
+  <p>Welcome!</p>
 
-<div class="container">
+  <!-- ✅ Profil complet -->
+  <pre>{{ user | json }}</pre>
 
-      <div *ngIf="auth.isLoggedIn">
-        <p>Welcome!</p>
-        <pre *ngIf="auth.userInfo as user">{{ user | json }}</pre>
+  <!-- ✅ Rôles Okta -->
+  <div *ngIf="user?.roles?.length">
+    <h3>Okta Roles</h3>
+    <ul>
+      <li *ngFor="let role of user.roles">{{ role }}</li>
+    </ul>
+  </div>
 
-        <button (click)="logout()">Logout</button>
+  <!-- ✅ Rôles Keycloak - Realm -->
+  <div *ngIf="user?.realm_access?.roles?.length">
+    <h3>Keycloak Realm Roles</h3>
+    <ul>
+      <li *ngFor="let role of user.realm_access.roles">{{ role }}</li>
+    </ul>
+  </div>
 
-        <hr />
-        <button (click)="getUser()">GET /user</button>
-        <button (click)="getAdmin()">GET /admin</button>
+  <!-- ✅ Rôles Keycloak - Client -->
+  <div *ngIf="user?.resource_access?.['angular-client']?.roles?.length">
+    <h3>Keycloak Client Roles (angular-client)</h3>
+    <ul>
+      <li *ngFor="let role of user.resource_access['angular-client'].roles">
+        {{ role }}
+      </li>
+    </ul>
+  </div>
 
-        <p *ngIf="userResponse"><strong>User:</strong> {{ userResponse }}</p>
-        <p *ngIf="adminResponse"><strong>Admin:</strong> {{ adminResponse }}</p>
-      </div>
-    </div>
+  <!-- ✅ Actions -->
+  <button (click)="logout()">Logout</button>
+
+  <hr />
+  <button (click)="getUser()">GET /user</button>
+  <button (click)="getAdmin()">GET /admin</button>
+
+  <!-- ✅ Réponses -->
+  <p *ngIf="userResponse"><strong>User:</strong> {{ userResponse }}</p>
+  <p *ngIf="adminResponse"><strong>Admin:</strong> {{ adminResponse }}</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+

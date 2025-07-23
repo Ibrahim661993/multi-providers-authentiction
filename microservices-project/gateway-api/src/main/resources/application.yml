@@ -31,6 +31,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: resource-service
+          uri: lb://resource-service
+          predicates:
+            - Path=/resource-service/**
+          filters:
+              - StripPrefix=1
+
 
   main:
     web-application-type: reactive

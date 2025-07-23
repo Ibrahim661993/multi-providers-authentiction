@@ -46,3 +46,12 @@ jwt:
     client:
       service-url:
         defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web.client: DEBUG
+    org.springframework.web.reactive.function.client: DEBUG
+    org.springframework.http: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    tn.thinktank: DEBUG

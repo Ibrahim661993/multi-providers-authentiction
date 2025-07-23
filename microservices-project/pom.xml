@@ -21,6 +21,7 @@
         <module>registry-api</module>
         <module>multi-auth</module>
         <module>okta-auth</module>
+        <module>resource-service</module>
     </modules>
     <properties>
         <java.version>21</java.version>
