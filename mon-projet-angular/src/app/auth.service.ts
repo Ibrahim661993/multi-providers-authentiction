@@ -28,17 +28,62 @@ export class AuthService {
     strictDiscoveryDocumentValidation: false,
   };
 
-  loginWithKeycloak(): void {
-    this.currentTenant = 'tenant-keycloak';
+  // configureTenant(tenant?: string) {
+  //   if (tenant === 'tenant-okta') {
+  //     this.currentTenant = 'tenant-okta';
+  //     this.oauthService.configure(this.oktaConfig);
+  //   } else {
+  //     // Par défaut keycloak
+  //     this.currentTenant = 'tenant-keycloak';
+  //     this.oauthService.configure(this.keycloakConfig);
+  //   }
+  // }
+  configureTenant(tenant: string) {
+  this.currentTenant = tenant;
+  if (tenant == 'tenant-okta') {
+    this.oauthService.configure(this.oktaConfig);
+  } else {
     this.oauthService.configure(this.keycloakConfig);
-    this.oauthService.loadDiscoveryDocumentAndLogin();
+  }
+}
+
+
+  async initAuth() {
+    const savedTenant = localStorage.getItem('currentTenant') || 'tenant-keycloak';
+  this.configureTenant(savedTenant);
+    const loggedIn = await this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    if (loggedIn) {
+      await this.loadUserProfile();
+    }
   }
 
-  loginWithOkta(): void {
-    this.currentTenant = 'tenant-okta';
-    this.oauthService.configure(this.oktaConfig);
-    this.oauthService.loadDiscoveryDocumentAndLogin();
+  
+  async loginWithKeycloak(): Promise<void> {
+  this.currentTenant = 'tenant-keycloak';
+   localStorage.setItem('currentTenant', this.currentTenant);
+  
+  this.oauthService.configure(this.keycloakConfig);
+  // charge le document de découverte et déclenche login
+  const loggedIn = await this.oauthService.loadDiscoveryDocumentAndLogin();
+  if (loggedIn) {
+    // si login OK, charge le profil utilisateur
+    await this.loadUserProfile();
   }
+}
+ async loginWithOkta(): Promise<void> {
+  this.currentTenant = 'tenant-okta';
+  localStorage.setItem('currentTenant', this.currentTenant);
+  
+  this.oauthService.configure(this.oktaConfig);
+  // charge le document de découverte et déclenche login
+  const loggedIn = await this.oauthService.loadDiscoveryDocumentAndLogin();
+  if (loggedIn) {
+    // si login OK, charge le profil utilisateur
+    await this.loadUserProfile();
+  }
+}
+
+ 
 
   logout(): void {
     this.currentTenant = '';
@@ -48,9 +93,6 @@ export class AuthService {
     this.userProfile = null;
   }
 
-  // get identityClaims() {
-  //   return this.oauthService.loadUserProfile();
-  // }
 
  async loadUserProfile() {
   try {

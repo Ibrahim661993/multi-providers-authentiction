@@ -13,20 +13,27 @@ import { UserService } from './user.service';
 export class AppComponent {
   userResponse:string='';
   adminResponse:string='';
+
+
+
   
 
   constructor(public auth: AuthService,private userService:UserService) {
     
   }
+  ngOnInit() {
+  this.auth.initAuth();
+}
+  
 
   loginWithKeycloak() {
     this.auth.loginWithKeycloak();
-    setTimeout(() => this.auth.loadUserProfile(), 1000); 
+    //setTimeout(() => this.auth.loadUserProfile(), 1000); 
   }
 
   loginWithOkta() {
     this.auth.loginWithOkta();
-    setTimeout(() => this.auth.loadUserProfile(), 1000); 
+   // setTimeout(() => this.auth.loadUserProfile(), 1000); 
   }
 
   logout() {
