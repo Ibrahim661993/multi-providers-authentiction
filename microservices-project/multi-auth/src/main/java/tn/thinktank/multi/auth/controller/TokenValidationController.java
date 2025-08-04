@@ -83,5 +83,6 @@ public class TokenValidationController {
         return Set.of();
     }
 
-    public record ValidationResponse(boolean active, String username, Collection<String> roles) {}
+    public record ValidationResponse(boolean active, String username, Collection<String> roles) {
+    }
 }

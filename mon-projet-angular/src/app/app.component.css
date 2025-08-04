@@ -1,34 +1,88 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* toute la hauteur visible de la fenêtre */
-   background-image: url('/assets/thinktank.png'); /* ← chemin de l’image */
+  height: 100vh;
+  /* toute la hauteur visible de la fenêtre */
+  background-image: url('/assets/thinktank.png');
+  /* ← chemin de l’image */
 }
 
 
 .container {
-  flex-grow: 1; /* prend tout l'espace restant */
+  flex-grow: 1;
+  /* prend tout l'espace restant */
   width: 100%;
-  margin: 0; /* centré horizontalement */
-  
-  
- 
+  margin: 0;
+  /* centré horizontalement */
+
+
+
   background-color: #f8f9fa;
 
- 
-  background-size: cover;      /* adapte l’image à la taille du conteneur */
+
+  background-size: cover;
+  /* adapte l’image à la taille du conteneur */
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
- 
+
 }
-.button-group {
+.button-group{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0;
+
 }
+
+button {
+  background-color: #0078d0;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  touch-action: manipulation;
+}
+button:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+button:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 16px 48px;
+  }
+}
+
+
 
 
 button {
@@ -58,13 +112,14 @@ pre {
 }
 
 .page-header {
-  height: 100px; /* ou la hauteur que tu veux */
+  height: 100px;
+  /* ou la hauteur que tu veux */
   display: flex;
   align-items: center;
- 
-  background-color :white;
+
+  background-color: white;
   color: white;
-  
+
   border-radius: 8px;
 }
 
@@ -75,19 +130,24 @@ pre {
 }
 
 .title {
-  
+
   margin: 0;
-  flex: 1; /* ← prend tout l’espace disponible */
-  text-align: center; /* ← centre le texte dans cet espace */ 
-  color: #343a40;
+  flex: 1;
+  /* ← prend tout l’espace disponible */
+  text-align: center;
+  /* ← centre le texte dans cet espace */
+  /*color: #343a40;*/
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  font-size: 2.5rem;
+  margin: 20px 0;
+
 }
-
-
-
-
-
-
-
-
 
 

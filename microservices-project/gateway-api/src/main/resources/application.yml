@@ -37,6 +37,12 @@ spring:
             - Path=/resource-service/**
           filters:
               - StripPrefix=1
+        - id: oauth2
+          uri: lb://oauth2
+          predicates:
+            - Path=/oauth2/**
+          filters:
+             - StripPrefix=1
 
 
   main:

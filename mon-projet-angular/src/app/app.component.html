@@ -1,44 +1,24 @@
 <header class="page-header">
   <img src="assets/logo.png" alt="Logo" class="logo" />
   <h1 class="title">Multi Providers Authentication</h1>
-  <div class="button-group">
+  <div class="button-group" *ngIf="!auth.isLoggedIn">
     <button (click)="loginWithKeycloak()">Login with Keycloak</button>
     <button (click)="loginWithOkta()">Login with Okta</button>
   </div>
 </header>
-
-<!-- ✅ Une seule section de contenu connecté -->
 <div class="container" *ngIf="auth.isLoggedIn && auth.userInfo as user">
-  <p>Welcome!</p>
-
-  <!-- ✅ Profil complet -->
-  <pre>{{ user | json }}</pre>
-
-  <!-- ✅ Rôles Okta -->
-  <div *ngIf="user?.roles?.length">
-    <h3>Okta Roles</h3>
-    <ul>
-      <li *ngFor="let role of user.roles">{{ role }}</li>
-    </ul>
-  </div>
-
-  <!-- ✅ Rôles Keycloak - Realm -->
-  <div *ngIf="user?.realm_access?.roles?.length">
-    <h3>Keycloak Realm Roles</h3>
-    <ul>
-      <li *ngFor="let role of user.realm_access.roles">{{ role }}</li>
-    </ul>
-  </div>
-
-  <!-- ✅ Rôles Keycloak - Client -->
-  <div *ngIf="user?.resource_access?.['angular-client']?.roles?.length">
-    <h3>Keycloak Client Roles (angular-client)</h3>
-    <ul>
-      <li *ngFor="let role of user.resource_access['angular-client'].roles">
-        {{ role }}
-      </li>
-    </ul>
-  </div>
+  <!-- ✅ Message de bienvenue personnalisé -->
+  <p>
+    Welcome
+    <strong>{{ user?.info?.given_name || user?.info?.name || user?.info?.preferred_username }}</strong>,
+    your role is:
+    <strong>
+      {{
+      user?.roles?.[0] ||
+      user?.resource_access?.['alibou-rest-api']?.roles?.[0]
+      }}
+    </strong>
+  </p>
 
   <!-- ✅ Actions -->
   <button (click)="logout()">Logout</button>
@@ -51,14 +31,3 @@
   <p *ngIf="userResponse"><strong>User:</strong> {{ userResponse }}</p>
   <p *ngIf="adminResponse"><strong>Admin:</strong> {{ adminResponse }}</p>
 </div>
-
-
-
-
-
-
-
-
-
-
-

@@ -1,9 +1,6 @@
 package tn.thinktank.multi.auth.config;
 
 
-
-
-
 import tn.thinktank.multi.auth.context.TenantContextHolder;
 
 import tn.thinktank.multi.auth.entity.Tenant;

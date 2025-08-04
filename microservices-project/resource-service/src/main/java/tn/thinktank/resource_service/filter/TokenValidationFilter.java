@@ -70,6 +70,9 @@ public class TokenValidationFilter extends OncePerRequestFilter {
 
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 log.info(" Token validated for user: {}", validationResponse.username());
+                log.info("✅ Authenticated user: {}", validationResponse.username());
+                log.info("🔐 Roles: {}", validationResponse.roles());
+
 
                 filterChain.doFilter(request, response);
             } else {
@@ -89,5 +92,6 @@ public class TokenValidationFilter extends OncePerRequestFilter {
 //        }
     }
 
-    public record ValidationResponse(boolean active, String username, List<String> roles) {}
+    public record ValidationResponse(boolean active, String username, List<String> roles) {
+    }
 }

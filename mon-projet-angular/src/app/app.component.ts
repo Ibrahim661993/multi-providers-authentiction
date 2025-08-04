@@ -28,12 +28,12 @@ export class AppComponent {
 
   loginWithKeycloak() {
     this.auth.loginWithKeycloak();
-    //setTimeout(() => this.auth.loadUserProfile(), 1000); 
+    
   }
 
   loginWithOkta() {
     this.auth.loginWithOkta();
-   // setTimeout(() => this.auth.loadUserProfile(), 1000); 
+   
   }
 
   logout() {

@@ -13,24 +13,27 @@ import java.util.Optional;
 public class AuthController {
     @Autowired
     private AuthService authService;
+
     @PostMapping("register")
-    public User registerUser(@RequestBody User user){
+    public User registerUser(@RequestBody User user) {
         return authService.saveUser(user);
     }
+
     @GetMapping("/user/{username}")
-    public Optional<User> getUser(@PathVariable  String username){
+    public Optional<User> getUser(@PathVariable String username) {
         return authService.getUserByUsername(username);
     }
 
 
     @PreAuthorize("hasRole('client_user')")
     @GetMapping
-    public String hello(){
+    public String hello() {
         return "Hello from Spring Boot & keycloak!";
     }
+
     @PreAuthorize("hasRole(('client_admin'))")
     @GetMapping("/hello-2")
-    public String hello2(){
+    public String hello2() {
         return "Hello from Spring Boot & keycloak!-ADMIN";
     }
 }

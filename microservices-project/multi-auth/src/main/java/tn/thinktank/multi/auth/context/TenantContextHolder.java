@@ -1,7 +1,6 @@
 package tn.thinktank.multi.auth.context;
 
 
-
 public class TenantContextHolder {
     private static final ThreadLocal<String> CONTEXT = new ThreadLocal<>();
 

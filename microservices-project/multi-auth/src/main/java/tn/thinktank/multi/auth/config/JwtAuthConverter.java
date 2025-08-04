@@ -1,9 +1,6 @@
 package tn.thinktank.multi.auth.config;
 
 
-
-
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;
 
@@ -19,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 @Component
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
@@ -47,6 +45,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
     private String getPrincipleClaimName(Jwt jwt) {
         return Optional.ofNullable(principleAttribute).orElse(JwtClaimNames.SUB);
     }
+
     //private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt jwt) {
 //        Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
 //        if (resourceAccess == null || resourceAccess.get(resourceId) == null) return Set.of();
