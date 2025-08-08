@@ -4,16 +4,28 @@ server:
 spring:
   application:
     name: okta-auth
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          okta:
+#            client-id: "0oaoajilv0QaRSY6s5d7"
+#            client-secret: "0OShvz3xxAu3N0oZUCgkd-oEly7X_QWT1hX2BzpZMq_aKSJCISdy5iUX0Jy6267p"
+#            scope: openid, profile, email
+#            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+#
+#        provider:
+#          okta:
+#            issuer-uri: https://dev-54238179.okta.com/oauth2/default
+
   security:
     oauth2:
-      client:
-        registration:
-          okta:
-            client-id: "0oaoajilv0QaRSY6s5d7"
-            client-secret: "0OShvz3xxAu3N0oZUCgkd-oEly7X_QWT1hX2BzpZMq_aKSJCISdy5iUX0Jy6267p"
-            scope: openid, profile, email
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-54238179.okta.com/oauth2/default
 
-        provider:
-          okta:
-            issuer-uri: https://dev-54238179.okta.com/oauth2/default
+jwt:
+  auth:
+    converter:
+      principle-attribute: sub
+      resource-id: okta-auth  # juste un nom arbitraire, ou laisse vide si tu veux
